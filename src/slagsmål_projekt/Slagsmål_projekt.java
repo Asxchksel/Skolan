@@ -1,7 +1,7 @@
 package slagsmål_projekt;
 
 import java.util.Scanner;
-
+// Tststata
 public class Slagsmål_projekt {
 
     public static void main(String[] args) {
