@@ -5,10 +5,11 @@ import java.util.Scanner;
 public class Slagsmål_projekt {
 
     public static short Php = 100;
-    public static short Chp = 150;
+    public static short Chp = 100;
+    public static Scanner keyb = new Scanner(System.in);
+    public static int fattack = (int) (Math.random() * 100);
     
     public static void main(String[] args) {
-        Scanner keyb = new Scanner(System.in);
         System.out.println("F(fight) eller S(shop): ");
         String fs = keyb.nextLine();
         if (fs.equalsIgnoreCase("f")) {
@@ -20,16 +21,13 @@ public class Slagsmål_projekt {
     }
 
     static void Fight() {
-
-        Scanner keyb = new Scanner(System.in);
-
         while (Chp > 0 && Php > 0) {
 
             System.out.println("Vilken Attack vill du använda: ");
             int att = keyb.nextInt();
 
             if (att == 1) {
-                double träff = Math.random() * 100;
+                int träff = (int) (Math.random() * 100);
                 if (träff > 25) {
                     System.out.println("Din attack träffade, du gör 10 damage");
                     Chp = (short) (Chp - 10);
@@ -42,7 +40,7 @@ public class Slagsmål_projekt {
 
             }
             if (att == 2) {
-                double träff = Math.random() * 100;
+                int träff = (int) (Math.random() * 100);
                 if (träff > 66) {
                     System.out.println("Din attack träffade, du gör 40 damage");
                     Chp = (short) (Chp - 40);
@@ -55,17 +53,24 @@ public class Slagsmål_projekt {
             }
             
             else if(att == 3) {
-                double evade = Math.random() * 100;
+                int evade = (int) (Math.random() * 100);
                 if (evade >= 50){
-                    System.out.println("Fiend attack missade");
+                    System.out.println(fattack);
+                    fattack = fattack - 15;
+                    System.out.println(fattack);
+                    Fiende();
+                }
+                else{
+                    System.out.println("Du nuddade gräss ofriviligt");
+                    Fiende();
                 }
             }
         }
     }
 
     static void Fiende(){
-        double fattack = Math.random() * 100;
-        if (fattack > 33){
+        if (fattack > 45){
+            Php =(short) (Php - 25);
             System.out.println("Din fiendes attack träffade, dem gör 25 skada. Du har " + Php +" hp kvar.");
         }
         else{
@@ -74,7 +79,6 @@ public class Slagsmål_projekt {
     }
     
     static void Shop() {
-        Scanner keyb = new Scanner(System.in);
         String[] fält = new String[4];
         fält[0] = "Redbull - 50 Vbucks";
         fält[1] = "Vatten - 30 Vbucks";
@@ -88,6 +92,8 @@ public class Slagsmål_projekt {
 
         System.out.println("Vad vill du köpa?: ");
         int köp = keyb.nextInt();
+        
+        ;
         
     }
 }
