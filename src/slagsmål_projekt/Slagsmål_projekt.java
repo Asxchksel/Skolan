@@ -7,7 +7,6 @@ public class Slagsmål_projekt {
     public static short Php = 100;
     public static short Chp = 100;
     public static Scanner keyb = new Scanner(System.in);
-    public static int fattack = (int) (Math.random() * 100);
     
     public static void main(String[] args) {
         System.out.println("F(fight) eller S(shop): ");
@@ -53,11 +52,11 @@ public class Slagsmål_projekt {
             }
             
             else if(att == 3) {
-                int evade = (int) (Math.random() * 100);
+                double evade = (Math.random() * 100);
                 if (evade >= 50){
-                    System.out.println(fattack);
+                   /* System.out.println(fattack);
                     fattack = fattack - 15;
-                    System.out.println(fattack);
+                    System.out.println(fattack);*/
                     Fiende();
                 }
                 else{
@@ -69,6 +68,7 @@ public class Slagsmål_projekt {
     }
 
     static void Fiende(){
+        int fattack = (int) (Math.random() * 100);
         if (fattack > 45){
             Php =(short) (Php - 25);
             System.out.println("Din fiendes attack träffade, dem gör 25 skada. Du har " + Php +" hp kvar.");
