@@ -13,18 +13,37 @@ public class Slagsmål_projekt {
         String fs = keyb.nextLine();
         if (fs.equalsIgnoreCase("f")) {
             Fight();
-        } else if (fs.equalsIgnoreCase("s")) {
-            Shop();
-        }
+        } 
+        
+        keyb.nextLine();
+        
         System.out.println("Vill du spela igen?");
-
+        String spela = keyb.nextLine();
+        if (spela.equalsIgnoreCase("JA")){
+            System.out.println("Spelar igen");
+            Fight();
+        }
+        else{
+            System.out.println("okej");
+        }
+        
     }
 
     static void Fight() {
         while (Chp > 0 && Php > 0) {
             int fattack = (int) (Math.random() * 100);
+            String[] fält = new String[3];
+            fält[0] = "1 - Attack 1 - Hög chans att träffa låg dmg";
+            fält[1] = "2 - Attack 2 - Låg chans att träffa men hög dmg";
+            fält[2] = "3 - Evade - Chans att undvika fiende attack";
+        
+            for (String fält1 : fält) {
+                System.out.println(fält1);
+            }
             System.out.println("Vilken Attack vill du använda: ");
             byte att = keyb.nextByte();
+
+
 
             if (att == 1) {
                 int träff = (int) (Math.random() * 100);
@@ -75,25 +94,5 @@ public class Slagsmål_projekt {
         else{
             System.out.println("Din fiendes attack missade, du hade tur.");
     }
-    }
-    
-    static void Shop() {
-        int vbucks = 600;
-        String[] fält = new String[4];
-        fält[0] = "Redbull - 50 Vbucks";
-        fält[1] = "Vatten - 30 Vbucks";
-        fält[2] = "Doritos - 75 Vbucks";
-        fält[3] = "Book - 600 Vbucks";
-        
-         for(int i=0; i<fält.length; i++)
-        {
-            System.out.println(i + ": " + fält[i]);
-        }
-
-        System.out.println("Vad vill du köpa?: ");
-        int köp = keyb.nextInt();
-        
-        
-        
     }
 }
